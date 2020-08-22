@@ -54,6 +54,15 @@ All in all, pulling in [Optimism's](https://optimism.leastbad.com/) own example,
 <% end %>
 ```
 
+You can also add models to an association easily with the `add` method. There's a corresponding `delete` method for removing models from
+an association. Simply add `data-assocation="<name of association>" data-reflex="click->FormReflex#add"`
+
+```
+<button type="button" data-association="post_details" data-reflex="click->FormReflex#add">
+    Add Post Detail
+</button>
+```
+
 
 ## Installation
 Add this line to your application's Gemfile:
