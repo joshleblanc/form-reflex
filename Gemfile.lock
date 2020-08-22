@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    form-reflex (0.1.0)
+    form-reflex (1.0.1)
       optimism
       rails (~> 6.0.3, >= 6.0.3.2)
       stimulus_reflex
