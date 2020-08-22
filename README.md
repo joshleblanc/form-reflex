@@ -7,16 +7,35 @@ FormReflex provides real time form validation on change, using the validations a
 
 Please follow the setup instructions for optimism [here](https://optimism.leastbad.com/quick-start)
 
-Usage for FormReflex is *identical* to the optimism usage, with the exception that your form control must have this additional attribute:
+Usage for FormReflex is *identical* to the optimism usage, with 2 exceptions:
+
+1) You must specify data-reflex="change->FormReflex#handle_change" on your form control
 
 ```erb
 data-reflex="change->FormReflex#handle_change"
 ```
 
-So, pulling in [Optimism's](https://optimism.leastbad.com/) own example, it would look like this:
+2) The model you want to validate must be initialized in session[:model]
+
+For example:
+
+```ruby
+def new
+  @post = Post.new
+  session[:model] = @post unless @stimulus_reflex
+end
+
+private
+def set_post
+  @post = Post.find(params[:id])
+  session[:model] = @post unless @stimulus_reflex
+end
+``` 
+
+All in all, pulling in [Optimism's](https://optimism.leastbad.com/) own example, it would look like this:
 
 ```erb
-<%= form_with(model: post) do |form| %>
+<%= form_with(model: session[:model]) do |form| %>
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name, data: { reflex: "change->FormControl#handle_change" } %>
