@@ -38,13 +38,13 @@ All in all, pulling in [Optimism's](https://optimism.leastbad.com/) own example,
 <%= form_with(model: session[:model]) do |form| %>
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, data: { reflex: "change->FormControl#handle_change" } %>
+    <%= form.text_field :name, data: { reflex: "change->FormReflex#handle_change" } %>
     <%= form.error_for :name %>
   </div>
 
   <div class="field">
     <%= form.label :body %>
-    <%= form.text_area :body, data: { reflex: "change->FormControl#handle_change" } %>
+    <%= form.text_area :body, data: { reflex: "change->FormReflex#handle_change" } %>
     <%= form.error_for :body %>
   </div>
 
